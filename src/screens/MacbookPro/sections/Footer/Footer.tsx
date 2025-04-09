@@ -7,6 +7,12 @@ import {
   FaYoutube,
 } from 'react-icons/fa';
 
+const FacebookIcon = FaFacebookF as unknown as React.FC;
+const InstagramIcon = FaInstagram as unknown as React.FC;
+const TwitterIcon = FaTwitter as unknown as React.FC;
+const GooglePlusIcon = FaGooglePlusG as unknown as React.FC;
+const YoutubeIcon = FaYoutube as unknown as React.FC;
+
 const Footer: React.FC = () => {
   return (
     <footer className="bg-black text-white shadow-lg">
@@ -20,7 +26,7 @@ const Footer: React.FC = () => {
             className="bg-white text-black rounded-full p-2 hover:scale-110 transition cursor-pointer"
             aria-label="Facebook"
           >
-            <FaFacebookF />
+            <FacebookIcon />
           </a>
           <a
             href="https://instagram.com"
@@ -29,7 +35,7 @@ const Footer: React.FC = () => {
             className="bg-white text-black rounded-full p-2 hover:scale-110 transition cursor-pointer"
             aria-label="Instagram"
           >
-            <FaInstagram />
+            <InstagramIcon />
           </a>
           <a
             href="https://twitter.com"
@@ -38,7 +44,7 @@ const Footer: React.FC = () => {
             className="bg-white text-black rounded-full p-2 hover:scale-110 transition cursor-pointer"
             aria-label="Twitter"
           >
-            <FaTwitter />
+            <TwitterIcon />
           </a>
           <a
             href="https://plus.google.com"
@@ -47,7 +53,7 @@ const Footer: React.FC = () => {
             className="bg-white text-black rounded-full p-2 hover:scale-110 transition cursor-pointer"
             aria-label="Google Plus"
           >
-            <FaGooglePlusG />
+            <GooglePlusIcon />
           </a>
           <a
             href="https://youtube.com"
@@ -56,12 +62,9 @@ const Footer: React.FC = () => {
             className="bg-white text-black rounded-full p-2 hover:scale-110 transition cursor-pointer"
             aria-label="YouTube"
           >
-            <FaYoutube />
+            <YoutubeIcon />
           </a>
         </div>
-
-        
-        
       </div>
 
       {/* Copyright */}
