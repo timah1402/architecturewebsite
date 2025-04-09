@@ -9,7 +9,7 @@ import {
 } from "../../../../components/ui/navigation-menu";
 import { Menu, X } from "lucide-react";
 
-export const ElementByAnima = (): JSX.Element => {
+export const ElementByAnima = ()  => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeItem, setActiveItem] = useState("accueil"); // Default active item
 

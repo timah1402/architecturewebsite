@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent } from "../../../../components/ui/card";
 
-export const DivWrapperByAnima = (): JSX.Element => {
+export const DivWrapperByAnima = ()=> {
   // Project data for completed projects
   const completedProjects = [
     { id: 1, title: "Projet Monsieur Mbow", image: "/2-5.png" },

@@ -26,7 +26,7 @@ const services = [
   },
 ];
 
-export const FrameWrapperByAnima = (): JSX.Element => {
+export const FrameWrapperByAnima = ()=> {
   return (
     <section className="relative w-full py-16 px-8 bg-[#f8f8f8]">
       <div className="max-w-[1574px] mx-auto">

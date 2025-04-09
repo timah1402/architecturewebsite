@@ -5,7 +5,7 @@ import { Input } from "../../../../components/ui/input";
 import { Textarea } from "../../../../components/ui/textarea";
 import Footer from "../Footer/Footer";
 
-export const OverlapWrapperByAnima = (): JSX.Element => {
+export const OverlapWrapperByAnima = ()=> {
   const contactInfo = [
     {
       icon: "/---icon--alternate-map-marker-.png",

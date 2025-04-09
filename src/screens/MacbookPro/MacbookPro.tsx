@@ -6,7 +6,7 @@ import { FrameWrapperByAnima } from "./sections/FrameWrapperByAnima";
 import { OverlapWrapperByAnima } from "./sections/OverlapWrapperByAnima";
 import Footer from './sections/Footer/Footer';
 
-export const MacbookPro = (): JSX.Element => {
+export const MacbookPro = ()=> {
   return (
     <div className="bg-white flex flex-col items-center w-full">
       <div className="bg-white w-full max-w-[1512px] overflow-hidden">

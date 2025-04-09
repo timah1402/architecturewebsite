@@ -1,6 +1,6 @@
 import React from "react";
 
-export const FrameByAnima = (): JSX.Element => {
+export const FrameByAnima = () => {
   return (
     <section className="w-full py-16 bg-[#f8f8f8]">
       <div className="container mx-auto px-4 max-w-7xl">
