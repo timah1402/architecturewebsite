@@ -45,13 +45,13 @@ export async function POST(req: Request) {
     try {
       await transporter.verify();
       console.log("SMTP connection verified successfully");
-    } catch (verifyError) {
-      console.error("SMTP verification failed:", verifyError);
+    } catch (error) {
+      console.error("SMTP verification failed:", error);
       return NextResponse.json(
         { 
           success: false, 
           message: "Erreur de connexion au serveur email", 
-          error: verifyError.message 
+          error: error instanceof Error ? error.message : "Unknown error"
         },
         { status: 500 }
       );
@@ -78,13 +78,13 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error("Contact form error:", error);
     
-    // Return more specific error information for debugging
+    // Return more specific error information for debugging with proper type checking
     return NextResponse.json(
       { 
         success: false, 
         message: "Une erreur est survenue lors de l'envoi du message",
-        error: error.message,
-        code: error.code
+        error: error instanceof Error ? error.message : "Unknown error",
+        code: error instanceof Error && 'code' in error ? error.code : undefined
       },
       { status: 500 }
     );
