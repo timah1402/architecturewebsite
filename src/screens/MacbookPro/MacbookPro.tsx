@@ -4,6 +4,7 @@ import { ElementByAnima } from "./sections/ElementByAnima/ElementByAnima";
 import { FrameByAnima } from "./sections/FrameByAnima";
 import { FrameWrapperByAnima } from "./sections/FrameWrapperByAnima";
 import { OverlapWrapperByAnima } from "./sections/OverlapWrapperByAnima";
+import Footer from './sections/Footer/Footer';
 
 export const MacbookPro = (): JSX.Element => {
   return (
@@ -27,7 +28,9 @@ export const MacbookPro = (): JSX.Element => {
         
         <div id="contact">
           <OverlapWrapperByAnima />
+          
         </div>
+        
       </div>
     </div>
   );
