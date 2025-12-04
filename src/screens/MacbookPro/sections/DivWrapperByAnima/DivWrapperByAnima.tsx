@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { motion } from "framer-motion";
 import { Card, CardContent } from "../../../../components/ui/card";
 
 export const DivWrapperByAnima = ()=> {
@@ -48,62 +51,128 @@ export const DivWrapperByAnima = ()=> {
     { id: 4, title: "Projet M. Fall 01", image: "/r-3-2---photo-1.png" },
   ];
 
-  // Project card component
+  // Project card component with modern design
   const ProjectCard = ({ title, image }: { title: string; image: string }) => (
-    <div className="flex flex-col">
-      <Card className="w-full rounded-[10px_10px_0px_0px] overflow-hidden border-0">
+    <motion.div
+      whileHover={{ y: -10 }}
+      transition={{ duration: 0.3 }}
+      className="flex flex-col group"
+    >
+      <Card className="w-full rounded-2xl overflow-hidden border-none shadow-xl bg-white">
         <CardContent className="p-0">
-          <div className="w-full h-[422px] bg-[#0800ff] overflow-hidden">
-            <img
+          <div className="w-full h-[380px] overflow-hidden relative">
+            <motion.img
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.5 }}
               className="w-full h-full object-cover"
               alt={title}
               src={image}
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+              <h3 className="font-bold text-white text-2xl drop-shadow-lg">
+                {title}
+              </h3>
+            </div>
           </div>
         </CardContent>
       </Card>
-      <div className="w-full h-[69px] bg-[#ffae00] flex items-center px-3.5">
-        <div className="font-['Inter',Helvetica] font-bold text-[#f8f8f8] text-2xl">
-          {title}
-        </div>
-      </div>
-    </div>
+    </motion.div>
   );
 
-  return (
-    <section className="w-full bg-[#f8f8f8] py-8 px-4">
-      <div className="container mx-auto">
-        {/* Completed Projects Section */}
-        <h2 className="text-[32px] font-['Inter',Helvetica] font-bold mb-8">
-          <span className="text-[#db703e]">Nos</span>
-          <span className="text-[#0800ff]"> réalisations</span>
-        </h2>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+
+  return (
+    <section className="w-full bg-gradient-to-b from-gray-50 via-white to-gray-50 py-20 px-4">
+      <div className="container mx-auto max-w-7xl">
+        {/* Completed Projects Section */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <h2 className="text-5xl md:text-6xl font-bold mb-4 text-center">
+            <span className="bg-gradient-to-r from-[#db703e] to-[#0800ff] bg-clip-text text-transparent">
+              Nos Réalisations
+            </span>
+          </h2>
+          <p className="text-center text-gray-600 text-xl mb-12">
+            Des projets achevés avec excellence et passion
+          </p>
+        </motion.div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"
+        >
           {completedProjects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              title={project.title}
-              image={project.image}
-            />
+            <motion.div key={project.id} variants={itemVariants}>
+              <ProjectCard
+                title={project.title}
+                image={project.image}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Ongoing Projects Section */}
-        <h2 className="text-[32px] font-['Inter',Helvetica] font-bold mb-8">
-          <span className="text-[#db703e]">Nos projets</span>
-          <span className="text-[#0800ff]"> en cours</span>
-        </h2>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <h2 className="text-5xl md:text-6xl font-bold mb-4 text-center">
+            <span className="bg-gradient-to-r from-[#0800ff] to-[#db703e] bg-clip-text text-transparent">
+              Projets en Cours
+            </span>
+          </h2>
+          <p className="text-center text-gray-600 text-xl mb-12">
+            L'avenir se construit aujourd'hui
+          </p>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {ongoingProjects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              title={project.title}
-              image={project.image}
-            />
+            <motion.div key={project.id} variants={itemVariants}>
+              <ProjectCard
+                title={project.title}
+                image={project.image}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,31 +1,33 @@
 "use client";
 import React from "react";
+import { motion } from "framer-motion";
 import { Button } from "../../../../components/ui/button";
 import { Input } from "../../../../components/ui/input";
 import { Textarea } from "../../../../components/ui/textarea";
 import Footer from "../Footer/Footer";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 export const OverlapWrapperByAnima = ()=> {
   const contactInfo = [
     {
-      icon: "/---icon--alternate-map-marker-.png",
+      icon: MapPin,
       text: "Hann Capa, près de l'arrêt du TER de Hann",
-      alt: "Icon alternate map",
+      label: "Adresse",
     },
     {
-      icon: "/---icon--alternate-calendar-.png",
+      icon: Clock,
       text: "24h/24, 7j/7",
-      alt: "Icon alternate",
+      label: "Horaires",
     },
     {
-      icon: "/---icon--envelope-.png",
+      icon: Mail,
       text: "abdouazizniang1010@gmail.com",
-      alt: "Icon envelope",
+      label: "Email",
     },
     {
-      icon: "/---icon--alternate-phone-.png",
+      icon: Phone,
       text: "+221 78 372 31 90",
-      alt: "Icon alternate phone",
+      label: "Téléphone",
     },
   ];
 
@@ -67,110 +69,164 @@ export const OverlapWrapperByAnima = ()=> {
   };
 
   return (
-    <section id="contact" className="relative w-full py-12 md:py-16 bg-[#f8f8f8]">
-      <div className="relative w-full min-h-[600px] md:min-h-[700px] lg:min-h-[910px]">
-        <img
-          className="absolute w-full h-full top-0 left-0 object-cover"
+    <section id="contact" className="relative w-full py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white">
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-16"
+      >
+        <h2 className="text-5xl md:text-6xl font-bold mb-4">
+          <span className="bg-gradient-to-r from-[#db703e] to-[#0800ff] bg-clip-text text-transparent">
+            Contactez-nous
+          </span>
+        </h2>
+        <p className="text-xl text-gray-600">Transformons ensemble votre vision en réalité</p>
+      </motion.div>
+
+      <div className="relative w-full min-h-[700px] md:min-h-[800px] rounded-3xl overflow-hidden mx-auto max-w-[1440px] px-4">
+        <motion.img
+          initial={{ scale: 1.1 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="absolute w-full h-full top-0 left-0 object-cover rounded-3xl"
           alt="Immeuble"
           src="/immeuble2-1.png"
         />
-        <div className="absolute w-full h-full top-0 left-0 bg-black opacity-[0.68]" />
+        <div className="absolute w-full h-full top-0 left-0 bg-gradient-to-br from-black/80 via-black/70 to-black/85 rounded-3xl" />
 
-        <div className="relative z-10 h-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col">
-          <div className="flex flex-col lg:flex-row justify-between gap-8 md:gap-12 lg:gap-16 pt-12 md:pt-16 lg:pt-20">
-            <div className="flex-1">
-              <h2 className="font-bold text-2xl sm:text-3xl lg:text-[32px] text-white mb-6 md:mb-8 lg:mb-10">
-                Contactez nous
-              </h2>
+        <div className="relative z-10 h-full px-4 sm:px-6 lg:px-12 py-12 flex flex-col">
+          <div className="flex flex-col lg:flex-row justify-between gap-8 md:gap-12 lg:gap-16">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex-1 glass-dark p-8 rounded-2xl shadow-2xl"
+            >
+              <h3 className="font-bold text-3xl text-white mb-8">
+                Envoyez-nous un message
+              </h3>
 
-              <div className="flex flex-col space-y-4 sm:space-y-6 lg:space-y-8">
+              <div className="flex flex-col space-y-6">
                 <div className="flex flex-col sm:flex-row gap-4">
                   <div className="flex-1 space-y-2">
-                    <label className="font-bold text-white">Nom</label>
+                    <label className="font-semibold text-white text-sm">Nom</label>
                     <Input
                       value={nom}
                       onChange={(e) => setNom(e.target.value)}
-                      className="h-[40px] sm:h-[47px] rounded-[10px] bg-white"
-                      placeholder="Votre nom"
+                      className="h-12 rounded-xl bg-white/90 border-0 focus:bg-white transition-all"
+                      placeholder="Votre nom complet"
                     />
                   </div>
-                  <div className="flex-1 space-y-2 mt-4 sm:mt-0">
-                    <label className="font-bold text-white">Téléphone</label>
+                  <div className="flex-1 space-y-2">
+                    <label className="font-semibold text-white text-sm">Téléphone</label>
                     <Input
                       value={telephone}
                       onChange={(e) => setTelephone(e.target.value)}
-                      className="h-[40px] sm:h-[47px] rounded-[10px] bg-white"
-                      placeholder="Votre téléphone"
+                      className="h-12 rounded-xl bg-white/90 border-0 focus:bg-white transition-all"
+                      placeholder="Votre numéro"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="font-bold text-white">Email</label>
+                  <label className="font-semibold text-white text-sm">Email</label>
                   <Input
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="h-[40px] sm:h-[47px] rounded-[10px] bg-white"
-                    placeholder="Votre email"
+                    className="h-12 rounded-xl bg-white/90 border-0 focus:bg-white transition-all"
+                    placeholder="votre.email@exemple.com"
                     type="email"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="font-bold text-white">Message</label>
+                  <label className="font-semibold text-white text-sm">Message</label>
                   <Textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="h-[120px] sm:h-[140px] lg:h-[165px] rounded-[10px] bg-white resize-none"
-                    placeholder="Votre message"
+                    className="h-32 rounded-xl bg-white/90 border-0 focus:bg-white resize-none transition-all"
+                    placeholder="Décrivez votre projet..."
                   />
                 </div>
 
-                <Button
-                  onClick={handleSubmit}
-                  disabled={loading}
-                  className="h-[45px] lg:h-[50px] bg-[#db703e] rounded-[10px] text-white font-bold text-lg sm:text-xl lg:text-2xl hover:bg-[#c5633a] transition-colors duration-300"
-                >
-                  {loading ? "Envoi..." : "Envoyer"}
-                </Button>
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <Button
+                    onClick={handleSubmit}
+                    disabled={loading}
+                    className="w-full h-14 bg-gradient-to-r from-[#db703e] to-[#ffae00] rounded-xl text-white font-bold text-lg shadow-xl hover:shadow-2xl hover:shadow-[#db703e]/50 transition-all duration-300"
+                  >
+                    {loading ? "Envoi en cours..." : "Envoyer le message"}
+                  </Button>
+                </motion.div>
 
                 {status && (
-                  <p className="text-white mt-2 italic font-semibold">
+                  <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-white text-center mt-2 p-4 rounded-xl bg-white/10 backdrop-blur-sm font-semibold"
+                  >
                     {status}
-                  </p>
+                  </motion.p>
                 )}
               </div>
-            </div>
+            </motion.div>
 
-            <div className="flex-1 mt-12 lg:mt-0">
-              <h3 className="font-bold text-xl sm:text-2xl text-white mb-6 md:mb-8 lg:mb-10">
-                Siège
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex-1 glass-dark p-8 rounded-2xl shadow-2xl"
+            >
+              <h3 className="font-bold text-3xl text-white mb-8">
+                Informations
               </h3>
 
-              <div className="space-y-4 md:space-y-6">
-                {contactInfo.map((item, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="w-6 h-6 flex-shrink-0 flex items-center justify-center">
-                      <img
-                        className="max-w-full max-h-full object-contain"
-                        alt={item.alt}
-                        src={item.icon}
-                      />
-                    </div>
-                    <span className="font-medium text-white text-base sm:text-lg md:text-xl lg:text-2xl break-words">
-                      {item.text}
-                    </span>
-                  </div>
-                ))}
+              <div className="space-y-6">
+                {contactInfo.map((item, index) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.1 * index }}
+                      className="flex items-start gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300"
+                    >
+                      <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-[#db703e] to-[#ffae00] rounded-lg">
+                        <IconComponent className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-[#ffae00] text-sm mb-1">
+                          {item.label}
+                        </p>
+                        <p className="text-white text-lg break-words">
+                          {item.text}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
-            </div>
+            </motion.div>
           </div>
 
-          <div className="mt-12 md:mt-16 lg:mt-auto mb-6 md:mb-8 lg:mb-10">
-            <p className="font-semibold italic text-white text-base sm:text-lg lg:text-xl">
-              NB : Après signature de contrat, les plans Architecturaux, les plans béton armé et les caméras de surveillance sont tous payés et offerts par notre Filiale EImTeC Finance — "Demandez un devis gratuit"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-12 glass-dark p-6 rounded-2xl"
+          >
+            <p className="font-medium text-white text-base sm:text-lg leading-relaxed">
+              <span className="text-[#ffae00] font-bold">Note importante :</span> Après signature de contrat, les plans Architecturaux, les plans béton armé et les caméras de surveillance sont tous payés et offerts par notre Filiale EImTeC Finance — <span className="text-[#db703e] font-semibold">"Demandez un devis gratuit"</span>
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
       <Footer />
