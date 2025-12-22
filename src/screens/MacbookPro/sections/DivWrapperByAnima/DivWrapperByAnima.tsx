@@ -2,176 +2,149 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Card, CardContent } from "../../../../components/ui/card";
+import { CldImage } from "next-cloudinary";
 
-export const DivWrapperByAnima = ()=> {
-  // Project data for completed projects
-  const completedProjects = [
-    { id: 1, title: "Projet Monsieur Mbow", image: "/2-5.png" },
-    { id: 2, title: "Projet R+1 Diourbel", image: "/bb-1.png" },
-    { id: 3, title: "Projet Cité du Futur", image: "/10-1.png" },
-    {
-      id: 4,
-      title: "Projet Pathe P2",
-      image: "/whatsapp-image-2024-12-02---22-18-06-f010785d-1.png",
-    },
-    {
-      id: 5,
-      title: "P5",
-      image: "/whatsapp-image-2024-12-02---22-18-07-cc0b3549-1.png",
-    },
-    { id: 6, title: "Projet Mr Diallo Thiès", image: "/image-2-1.png" },
-    {
-      id: 7,
-      title: "Mosquee",
-      image: "/whatsapp-image-2024-12-02---22-18-06-6faf3967-1.png",
-    },
-    {
-      id: 8,
-      title: "P1",
-      image: "/whatsapp-image-2024-12-02---22-18-04-6c38ce2e-1.png",
-    },
-    {
-      id: 9,
-      title: "P3",
-      image: "/whatsapp-image-2024-12-02---22-18-06-3a42b280-1.png",
-    },
-    {
-      id: 10,
-      title: "P4",
-      image: "/whatsapp-image-2024-12-02---22-18-07-ce8e0c35-1.png",
-    },
-  ];
-
-  // Project data for ongoing projects
-  const ongoingProjects = [
-    { id: 1, title: "Mosquee de Kaolack", image: "/2-6.png" },
-    { id: 2, title: "Bambilor Villa  R+1", image: "/h-1.png" },
-    { id: 3, title: "Projet M. Fall 02", image: "/image-3---photo-1.png" },
-    { id: 4, title: "Projet M. Fall 01", image: "/r-3-2---photo-1.png" },
-  ];
-
-  // Project card component with modern design
-  const ProjectCard = ({ title, image }: { title: string; image: string }) => (
-    <motion.div
-      whileHover={{ y: -10 }}
-      transition={{ duration: 0.3 }}
-      className="flex flex-col group"
-    >
-      <Card className="w-full rounded-2xl overflow-hidden border-none shadow-xl bg-white">
-        <CardContent className="p-0">
-          <div className="w-full h-[380px] overflow-hidden relative">
-            <motion.img
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.5 }}
-              className="w-full h-full object-cover"
-              alt={title}
-              src={image}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-              <h3 className="font-bold text-white text-2xl drop-shadow-lg">
-                {title}
-              </h3>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </motion.div>
-  );
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
+export const DivWrapperByAnima = () => {
   return (
-    <section className="w-full bg-gradient-to-b from-gray-50 via-white to-gray-50 py-20 px-4">
-      <div className="container mx-auto max-w-7xl">
-        {/* Completed Projects Section */}
+    <section className="w-full py-20 bg-gradient-to-b from-white via-gray-50 to-white">
+      <div className="container mx-auto px-4 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-4 text-center">
+          <h2 className="text-5xl md:text-6xl font-bold mb-4">
             <span className="bg-gradient-to-r from-[#db703e] to-[#0800ff] bg-clip-text text-transparent">
-              Nos Réalisations
+              À Propos
             </span>
           </h2>
-          <p className="text-center text-gray-600 text-xl mb-12">
-            Des projets achevés avec excellence et passion
-          </p>
         </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"
-        >
-          {completedProjects.map((project) => (
-            <motion.div key={project.id} variants={itemVariants}>
-              <ProjectCard
-                title={project.title}
-                image={project.image}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
+              <CldImage
+                src="team-1"
+                alt="Team"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
               />
-            </motion.div>
-          ))}
-        </motion.div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            </div>
+          </motion.div>
 
-        {/* Ongoing Projects Section */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col justify-center"
+          >
+            <p className="text-xl md:text-2xl leading-relaxed mb-8">
+              <span className="text-gray-800">
+                Basé à Dakar Sénégal, Hann Bel Air,{" "}
+              </span>
+              <span className="text-[#db703e] font-bold">Groupe EImTeC</span>
+              <span className="text-gray-800">
+                {" "}
+                est un leader dans le domaine de la{" "}
+              </span>
+              <span className="text-[#0800ff] font-semibold">
+                construction, de la rénovation résidentielle
+              </span>
+              <span className="text-gray-800">
+                , ainsi que de l&apos;investissement immobilier. Grâce à notre
+                expertise et à notre engagement envers l&apos;excellence, nous
+                avons su nous démarquer par notre capacité à concrétiser des
+                projets ambitieux qui répondent aux besoins de nos clients tout
+                en respectant l&apos;environnement.
+              </span>
+            </p>
+          </motion.div>
+        </div>
+
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mt-16 bg-white rounded-3xl shadow-xl p-8 md:p-12"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-4 text-center">
-            <span className="bg-gradient-to-r from-[#0800ff] to-[#db703e] bg-clip-text text-transparent">
-              Projets en Cours
-            </span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-[#db703e] to-[#0800ff] bg-clip-text text-transparent">
+            Historique de l&apos;entreprise
           </h2>
-          <p className="text-center text-gray-600 text-xl mb-12">
-            L'avenir se construit aujourd'hui
-          </p>
-        </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {ongoingProjects.map((project) => (
-            <motion.div key={project.id} variants={itemVariants}>
-              <ProjectCard
-                title={project.title}
-                image={project.image}
-              />
+          <div className="space-y-8">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="border-l-4 border-[#db703e] pl-6"
+            >
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                <span>EImTeC Ex Groupe Saly-bati, fondée en </span>
+                <span className="font-bold text-[#db703e] text-2xl">2007</span>
+                <span>
+                  , est une entreprise spécialisée dans la construction et la
+                  rénovation, et la promotion immobilière au service de
+                  particuliers, professionnels et collectivités. Depuis ses
+                  débuts, l&apos;entreprise s&apos;est engagée à fournir des
+                  prestations de haute qualité, alliant savoir-faire traditionnel
+                  et technologies modernes.
+                </span>
+              </p>
             </motion.div>
-          ))}
+
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="border-l-4 border-[#0800ff] pl-6"
+            >
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                <span>Forte de </span>
+                <span className="font-bold text-[#db703e] text-2xl">
+                  17 ans d&apos;expérience
+                </span>
+                <span>
+                  , elle a réalisé avec succès de nombreux projets, allant des
+                  maisons individuelles aux bâtiments industriels, en passant par
+                  des infrastructures publiques. Son équipe qualifiée et
+                  passionnée met un point d&apos;honneur à respecter les délais,
+                  les budgets, et les exigences environnementales.
+                </span>
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="border-l-4 border-[#ffae00] pl-6"
+            >
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                <span>
+                  Aujourd&apos;hui, EImTeC continue de se développer en
+                  s&apos;appuyant sur ses valeurs :{" "}
+                </span>
+                <span className="text-[#0800ff] font-bold text-xl">
+                  fiabilité, innovation et satisfaction client
+                </span>
+                <span>.</span>
+              </p>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
