@@ -22,14 +22,14 @@ export const DivWrapperByAnima = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-1 gap-12 items-center mb-16">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
+            {/* <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
               <CldImage
                 src="team-1"
                 alt="Team"
@@ -38,7 +38,7 @@ export const DivWrapperByAnima = () => {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-            </div>
+            </div> */}
           </motion.div>
 
           <motion.div
@@ -98,8 +98,8 @@ export const DivWrapperByAnima = () => {
                   rénovation, et la promotion immobilière au service de
                   particuliers, professionnels et collectivités. Depuis ses
                   débuts, l&apos;entreprise s&apos;est engagée à fournir des
-                  prestations de haute qualité, alliant savoir-faire traditionnel
-                  et technologies modernes.
+                  prestations de haute qualité, alliant savoir-faire
+                  traditionnel et technologies modernes.
                 </span>
               </p>
             </motion.div>
@@ -118,8 +118,8 @@ export const DivWrapperByAnima = () => {
                 </span>
                 <span>
                   , elle a réalisé avec succès de nombreux projets, allant des
-                  maisons individuelles aux bâtiments industriels, en passant par
-                  des infrastructures publiques. Son équipe qualifiée et
+                  maisons individuelles aux bâtiments industriels, en passant
+                  par des infrastructures publiques. Son équipe qualifiée et
                   passionnée met un point d&apos;honneur à respecter les délais,
                   les budgets, et les exigences environnementales.
                 </span>
